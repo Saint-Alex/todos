@@ -4,7 +4,8 @@
 
 ### Requsitos
 
-- [] Deve ser possivel crir um usuário
+- [x] Deve ser possivel crir um usuário
+- [] Deve ser possivel buscar um usuário
 - [] Deve ser possivel inserir um todo em um usuário
 - [] Deve ser possivel buscar os todos por usuário
 - [] Deve ser possivel alterar o titulo ou deadline em um todo
