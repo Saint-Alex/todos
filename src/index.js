@@ -25,6 +25,15 @@ function userAlreadyExists(request, response, next) {
 }
 
 function checksExistsUserAccount(request, response, next) {
+  const { username } = request.headers;
+
+  const user = users.find((user) => user.username === username);
+
+  if (!user) {
+    return response.status(400).json({error: "User already exists!"})
+  }
+
+  request.user = user;
 
   return next();
 }
@@ -43,6 +52,12 @@ app.post('/users', userAlreadyExists, (request, response) => {
   });
 
   return response.status(201).send();
+});
+
+app.get('/users', checksExistsUserAccount, (request, response) => {
+  const {user} = request;
+
+  return response.json(user);
 });
 
 app.get('/todos', checksExistsUserAccount, (request, response) => {
